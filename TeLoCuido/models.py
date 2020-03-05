@@ -1,5 +1,9 @@
 from django.db import models
 
+class Woow(models.Model):
+    nombre = models.CharField(max_length=255)
+    mail = models.CharField(max_length=255)
+    foto = models.CharField(max_length=2083)
 
 class Datos_personales(models.Model):
     ci = models.IntegerField()
