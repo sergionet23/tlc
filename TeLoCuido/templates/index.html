@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Lista de cuidacoches...en tu cara Dani!!!!</h1>
+    <div class="row">
+        {% for datos_personales in datos_personales %}
+            <di class="col">
+            <div class="card" style="width: 18rem;">
+                <img src={{datos_personales.image_url}} class="card-img-top" alt="{{datos_personales.image_url}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{datos_personales.nombre}} {{datos_personales.apellido}}</h5>
+                    <p class="card-text"> {{datos_personales.estado}}
+                        </p>
+                    <a href="#" class="btn btn-primary"> Deja tu opinion </a>
+                </div>
+            </div>
+        </di>
+        {% endfor %}
+    </div>
+{% endblock %}

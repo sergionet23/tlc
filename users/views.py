@@ -63,7 +63,7 @@ def login(request):
                 # Hacemos el login manualmente
                 do_login(request, user)
                 # Y le redireccionamos a la portada
-                return redirect('/admin/')
+                return redirect('/TeLoCuido/')
     # Si llegaos al final renderizamos el formulario
     return render(request, "login.html", {'form': form})
 
