@@ -8,5 +8,5 @@ urlpatterns = [
     path('Lugar_trabajo/', views.Lugar_trabajo),
     path('Monedero/', views.Monedero),
     path('Puntuacion/', views.Puntuacion),
-    path ('Datos_Bancarios', views.Datos_bancarios)
+    path ('Datos_Bancarios', views.Datos_bancarios),
 ]
