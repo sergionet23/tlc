@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'TeLoCuido.apps.TelocuidoConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
