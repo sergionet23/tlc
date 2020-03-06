@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
@@ -11,6 +10,22 @@ def bienvenido(request):
     # Si estamos identificados devolvemos la portada
     if request.user.is_authenticated:
         return render(request, "bienvenido.html")
+    # En otro caso redireccionamos al login
+    return redirect("/login")
+
+
+def usuarios(request):
+    # Si estamos identificados devolvemos la portada
+    if request.user.is_authenticated:
+        return render(request, "iniciousuario.html")
+    # En otro caso redireccionamos al login
+    return redirect("/login")
+
+
+def cuidacoches(request):
+    # Si estamos identificados devolvemos la portada
+    if request.user.is_authenticated:
+        return render(request, "iniciocuidacoches.html")
     # En otro caso redireccionamos al login
     return redirect("/login")
 
@@ -63,7 +78,14 @@ def login(request):
                 # Hacemos el login manualmente
                 do_login(request, user)
                 # Y le redireccionamos a la portada
-                return redirect('/TeLoCuido/')
+                if request.user.username == "cuidacochesapp":
+#                if request.user.groups.name == "cuidacoches":
+                    return redirect('/cuidacoches')
+#                elif request.user.groups.name == "usuarios":
+                elif request.user.username == "usuarioapp":
+                    return redirect('/usuarios')
+                else:
+                    return redirect('TeLoCuido/')
     # Si llegaos al final renderizamos el formulario
     return render(request, "login.html", {'form': form})
 
