@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Lista de cuidacoches...en tu cara Dani!!!!</h1>
+    <h1>Lista de Pura Sangres, #Never_Pony!!!!</h1>
     <div class="row">
-        {% for datos_personales in datos_personales %}
+        {% for integrante in equipo %}
             <di class="col">
             <div class="card" style="width: 18rem;">
-                <img src={{datos_personales.image_url}} class="card-img-top" alt="{{datos_personales.image_url}}">
+                <img src={{integrante.foto}} class="card-img-top" alt="{{integrante.fotos}}">
                 <div class="card-body">
-                    <h5 class="card-title">{{datos_personales.nombre}} {{datos_personales.apellido}}</h5>
-                    <p class="card-text"> {{datos_personales.estado}}
+                    <h5 class="card-title">{{integrante.nombre}} {{integrante.mail}}</h5>
+                    <p class="card-text"> Por una ciudad inteligente
                         </p>
-                    <a href="#" class="btn btn-primary"> Deja tu opinion </a>
+                    <a href="#" class="btn btn-primary"> Mail </a>
                 </div>
             </div>
         </di>
