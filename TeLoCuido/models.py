@@ -1,9 +1,11 @@
 from django.db import models
 
+
 class Woow(models.Model):
     nombre = models.CharField(max_length=255)
     mail = models.CharField(max_length=255)
     foto = models.CharField(max_length=2083)
+
 
 class Datos_personales(models.Model):
     ci = models.IntegerField()
@@ -21,20 +23,20 @@ class Datos_personales(models.Model):
     image_url = models.CharField(max_length=2083)
 
 
-class Lugar_trabajo (models.Model):
+class Lugar_trabajo(models.Model):
     ci = models.IntegerField()
     lugar_trabajo = models.CharField(max_length=255)
     horario = models.IntegerField()
 
 
-class Monedero (models.Model):
+class Monedero(models.Model):
     ci = models.IntegerField()
     fecha_mov = models.FloatField()
     monto = models.IntegerField()
     origen = models.CharField(max_length=255)
 
 
-class Puntuacion (models.Model):
+class Puntuacion(models.Model):
     ci = models.IntegerField()
     puntuacion = models.FloatField()
     comentarios = models.CharField(max_length=255)
@@ -45,4 +47,3 @@ class Datos_bancarios(models.Model):
     ci = models.IntegerField()
     cuenta_banco = models.IntegerField()
     banco = models.CharField(max_length=25)
-

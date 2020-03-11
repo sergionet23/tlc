@@ -1,6 +1,11 @@
     {% extends 'base.html' %}
 {% block content %}
     <h1>Lista de Pura Sangres, #Never_Pony!!!!</h1>
+    {% if user.is_authenticated %}
+        <p> Bienvenido, <b> {{ user.username }} | <a href="{% url "logout" %}"> Logout </a></b></p>
+    {% else %}
+        <p> Bienvenido. Por favor <a href="{% url "login" %}"> Login </a></b></p>
+    {% endif %}
     <div class="row">
         {% for integrante in equipo %}
             <di class="col">
