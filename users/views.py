@@ -85,7 +85,7 @@ def login(request):
                 elif request.user.username == "usuarioapp":
                     return redirect('/mapa')
                 else:
-                    return redirect('TeLoCuido/')
+                    return redirect('admin/')
     # Si llegaos al final renderizamos el formulario
     return render(request, "login.html", {'form': form})
 

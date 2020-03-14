@@ -57,8 +57,7 @@
 }));
 
 
-  const marker = new mapboxgl.Marker({draggable: false}).setLngLat([-56.187547235670365, -34.90461723313175]).addTo(map);
-  const marker1 = new mapboxgl.Marker({draggable: false}).setLngLat([-56.18697666757461, -34.90508515797628]).addTo(map);
+  const marker = new mapboxgl.Marker({draggable: false}).setLngLat([-56.18697666757461, -34.90508515797628]).addTo(map);
 
   function onDragEnd()
 {
@@ -76,22 +75,11 @@ let on = marker.on('dragend', onDragEnd);
             'type': 'Feature',
             'geometry': {
               'type': 'Point',
-              'coordinates': [-56.187547235670365, -34.90461723313175]
-            },
-            'properties': {
-              'title': 'CuidaCoches Tony',
-              'description': 'Colonia, 3 lugares disponibles'
-            }
-          },
-          {
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Point',
               'coordinates': [-56.18697666757461, -34.90508515797628]
             },
             'properties': {
               'title': 'CuidaCoches Brian',
-              'description': 'Ejido, 5 lugares disponibles'
+              'description': 'Ejido, Acualmente estas ocupando un lugar en esta cuadra'
             }
           }
         ]
@@ -112,8 +100,8 @@ let on = marker.on('dragend', onDragEnd);
                   marker.properties.title +
                   '</h3><p>' +
                   marker.properties.description +
-                  '</p>' + '<a>Desea elegir este lugar?</a>'+
-                      '<a href="lugarocupado">Si</a>'+'<a href=""> No</a>'
+                  '</p>' + '<a>Desea Liberar el lugar??</a>'+
+                      '<a href="http://127.0.0.1:8000/mapa/">Si</a>'+'<a href="http://127.0.0.1:8000/mapa/lugarocupado/"> No</a>'
               )
           )
           .addTo(map);
