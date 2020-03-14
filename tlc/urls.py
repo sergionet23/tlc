@@ -12,5 +12,7 @@ urlpatterns = [
     path('logout', views.logout),
     path('usuarios/', views.usuarios),
     path('cuidacoches/', views.cuidacoches),
+    path('dar_propina/', include('TeLoCuido.urls')),
+    path('puntuacion/', include('TeLoCuido.urls')),
     path('', include('mapa.urls')),
 ]

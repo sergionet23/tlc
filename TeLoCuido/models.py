@@ -49,3 +49,4 @@ class Datos_bancarios(models.Model):
     ci = models.IntegerField()
     cuenta_banco = models.IntegerField()
     banco = models.CharField(max_length=25)
+
