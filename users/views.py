@@ -83,7 +83,7 @@ def login(request):
                     return redirect('/cuidacoches')
 #                elif request.user.groups.name == "usuarios":
                 elif request.user.username == "usuarioapp":
-                    return redirect('/usuarios')
+                    return redirect('/mapa')
                 else:
                     return redirect('TeLoCuido/')
     # Si llegaos al final renderizamos el formulario

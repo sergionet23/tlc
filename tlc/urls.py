@@ -12,4 +12,5 @@ urlpatterns = [
     path('logout', views.logout),
     path('usuarios/', views.usuarios),
     path('cuidacoches/', views.cuidacoches),
+    path('', include('mapa.urls')),
 ]

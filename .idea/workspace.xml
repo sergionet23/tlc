@@ -20,6 +20,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="SvnConfiguration">
@@ -40,6 +41,7 @@
       <workItem from="1583725570031" duration="82000" />
       <workItem from="1583775437558" duration="50000" />
       <workItem from="1583776876307" duration="265000" />
+      <workItem from="1584148599517" duration="1713000" />
     </task>
     <servers />
   </component>
