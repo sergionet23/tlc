@@ -9,6 +9,12 @@
 	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
     <style>
+      #Publicidad{
+        width:820px;
+        height:1080px;
+        float: right;
+        background-color:yellow;
+        }
       body {
         margin: 0;
         padding: 0;
@@ -37,8 +43,7 @@
     </style>
 </head>
   <body>
-    <div id='map'> </div>
-
+    <div id='map' style='width: 1200px; height: 1080px'></div>
     <script>
   mapboxgl.accessToken = 'pk.eyJ1IjoicHJlb3llY3Rvd29vdyIsImEiOiJjazdvOTN5cGkwMWN1M2xtdmJ1MGRvd2s3In0.UrORy2QZRA_Gu5g8TGszAA';
   const map = new mapboxgl.Map({
@@ -55,8 +60,6 @@
     },
     trackUserLocation: true
 }));
-
-
   const marker = new mapboxgl.Marker({draggable: false}).setLngLat([-56.18697666757461, -34.90508515797628]).addTo(map);
 
   function onDragEnd()
@@ -108,5 +111,11 @@ let on = marker.on('dragend', onDragEnd);
       });
 
     </script>
+
+    <div id = "Publicidad" >
+        {% load static %}
+        <img src="{%  static 'publicidad.png' %}"></img>
+
+    </div>
 </body>
 </html>

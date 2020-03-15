@@ -5,6 +5,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Registro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <style id="applicationStylesheet" type="text/css">
 	.mediaViewInfo {
 		--web-view-name: Registro;
@@ -3166,43 +3170,22 @@ window.application = new Application();
 	</div>
 	<div id="Group_139">
 		<div id="Group_140">
-			<svg class="Rectangle_453_bs">
-				<linearGradient id="Rectangle_453_bs" spreadMethod="pad" x1="1.078" x2="-0.146" y1="0.5" y2="0.5">
-					<stop offset="0" stop-color="#00d3a8" stop-opacity="1"></stop>
-					<stop offset="1" stop-color="#01c0cf" stop-opacity="1"></stop>
-				</linearGradient>
-				<rect fill="url(#Rectangle_453_bs)" id="Rectangle_453_bs" rx="8" ry="8" x="0" y="0" width="188" height="48">
-				</rect>
-			</svg>
-			<div id="Registrarse">
-				<span>Registrarse</span>
-			</div>
+
 		</div>
 	</div>
 	<div id="Registro_bu">
 		<span>Registro</span>
 	</div>
 	<div id="E_mail">
-		<span>E-mail</span>
+            <form method="POST">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <!-- <button type="submit">Registrar</button> -->
+                <a class="btn btn-primary btn-lg" href="login" role="button">Registrar</a>
+            </form>
 	</div>
-	<div id="Nombre_de_Usuario">
-		<span>Nombre de Usuario</span>
-	</div>
-	<div id="Contrase_a">
-		<span>Contraseña</span>
-	</div>
-	<svg class="Line_1" viewBox="0 0 580 1">
-		<path fill="transparent" stroke="rgba(1,194,204,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Line_1" d="M 0 0 L 580 0">
-		</path>
-	</svg>
-	<svg class="Line_3" viewBox="0 0 580 1">
-		<path fill="transparent" stroke="rgba(1,194,204,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Line_3" d="M 0 0 L 580 0">
-		</path>
-	</svg>
-	<svg class="Line_2" viewBox="0 0 580 1">
-		<path fill="transparent" stroke="rgba(1,194,204,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Line_2" d="M 0 0 L 580 0">
-		</path>
-	</svg>
+
+
 </div>
 </body>
 </html>
