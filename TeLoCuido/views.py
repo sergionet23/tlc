@@ -10,26 +10,35 @@ def index(request):
     return render(request, 'index.html', {'equipo': equipo})
 
 
+@login_required(login_url='/login')
 def datos_personales(request):
     datos_personales = Datos_personales.objects.all()
     return render(request, 'datos_personales.html', {'datos_personales': datos_personales})
 
 
+@login_required(login_url='/login')
 def lugar_trabajo(request):
     lugar_trabajo = Lugar_trabajo.objects.all()
     return render(request, 'lugar_trabajo.html', {'lugar_trabajo': lugar_trabajo})
 
 
+@login_required(login_url='/login')
 def monedero(request):
     monedero = Monedero.objects.all()
-    return render(request, 'monedero.html', {'mondero': monedero})
+    return render(request, 'monedero.html', {'monedero': monedero})
 
 
 def puntuacion(request):
     puntuacion = Puntuacion.objects.all()
-    return render(request, 'puntacion.html',{'punutacion': puntuacion})
+    return render(request, 'puntuacion.html',{'puntuacion': puntuacion})
 
 
+@login_required(login_url='/login')
 def datos_bancarios(request):
     datos_bancarios = Datos_bancarios.objects.all()
     return render(request, 'datos_bancarios.html', {'datos_bancarios': datos_bancarios})
+
+
+def dar_propina(request):
+    dar_propina = Monedero.objects.all()
+    return render(request, 'dar_propina.html',{'dar_propina': dar_propina})
