@@ -9,7 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 def bienvenido(request):
     # Si estamos identificados devolvemos la portada
     if request.user.is_authenticated:
-        return render(request, "bienvenido.html")
+        return render(request, "index.html")
     # En otro caso redireccionamos al login
     return redirect("/login")
 

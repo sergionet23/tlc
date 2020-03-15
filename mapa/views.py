@@ -4,13 +4,20 @@ from django.template import loader
 
 
 def index(request):
-    template = loader.get_template('mapa/indexTLC.html')
+    template = loader.get_template('mapa.html')
     return HttpResponse(template.render({}, request))
 
 
 def lugarocupado(request):
     template = loader.get_template('mapa/lugarocupado.html')
     return HttpResponse(template.render({}, request))
+
+
+def propina(request):
+    template = loader.get_template('mapa/propina.html')
+    return HttpResponse(template.render({}, request))
+
+
 # Nos conectamos a la base de datos ejemplo.db (la crea si no existe)
 #conexion = sqlite3.connect('db.sqlite3')
 #latitud = conexion.cursor()

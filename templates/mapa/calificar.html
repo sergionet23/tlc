@@ -7166,10 +7166,11 @@ window.application = new Application();
 <body>
 <div id="Calificar">
 	<div id="Enmascarar_grupo_5">
+        {% load static %}
 	<svg style="width:inherit;height:inherit;overflow:visible;">
 		<rect fill="url(#Enmascarar_grupo_5_oy_pattern)" width="100%" height="100%"></rect>
 			<pattern elementId="Enmascarar_grupo_5_oy" id="Enmascarar_grupo_5_oy_pattern" x="0" y="0" width="100%" height="100%">
-				<image x="0" y="0" width="100%" height="100%" href="Enmascarar_grupo_5_oy_pattern.png" xlink:href="Enmascarar_grupo_5_oy_pattern.png"></image>
+				<image x="0" y="0" width="100%" height="100%" href="{% static 'Enmascarar_grupo_5_oy_pattern.png'%}" xlink:href="{% static 'Enmascarar_grupo_5_oy_pattern.png'%}"></image>
 			</pattern>
 			</svg>
 		</div>
@@ -7425,9 +7426,10 @@ window.application = new Application();
 		</div>
 	<div id="Enmascarar_grupo_4">
 	<svg style="width:inherit;height:inherit;overflow:visible;">
+        {% load static %}
 		<rect fill="url(#Enmascarar_grupo_4_o_pattern)" width="100%" height="100%"></rect>
 			<pattern elementId="Enmascarar_grupo_4_o" id="Enmascarar_grupo_4_o_pattern" x="0" y="0" width="100%" height="100%">
-				<image x="0" y="0" width="100%" height="100%" href="Enmascarar_grupo_4_o_pattern.png" xlink:href="Enmascarar_grupo_4_o_pattern.png"></image>
+				<image x="0" y="0" width="100%" height="100%" href="{% static 'Enmascarar_grupo_4_o_pattern.png'%}" xlink:href="{% static 'Enmascarar_grupo_4_o_pattern.png'%}"></image>
 			</pattern>
 			</svg>
 		</div>
@@ -9010,7 +9012,8 @@ window.application = new Application();
 <img id="Calificar_snapshot" src="Calificar_snapshot.png" srcset="Calificar_snapshot.png 1x, Calificar_snapshot@2x.png 2x">
 </div>
 
-<div id="ViewScaleSlider">
+
+<div id="ViewScaleSlider">
 
 	<input id="ViewScaleSliderInput" type="range" value="100" min="5" max="400" step="1" oninput="application.sliderChangeHandler(event)" onchange="application.sliderChangeHandler(event)"></input>
 	
