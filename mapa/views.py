@@ -4,7 +4,7 @@ from django.template import loader
 
 
 def index(request):
-    template = loader.get_template('mapa/index.html')
+    template = loader.get_template('mapa/indexTLC.html')
     return HttpResponse(template.render({}, request))
 
 

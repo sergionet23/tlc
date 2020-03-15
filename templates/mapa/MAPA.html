@@ -1,0 +1,124 @@
+<! -- Se definio directamente la ubicacion de ejido y 18 para que figuren los puntos de los cuidacoches -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa</title>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+      .marker {
+        background-image: url('mapbox-icon.png');
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .mapboxgl-popup {
+        max-width: 200px;
+      }
+      .mapboxgl-popup-content {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+      }
+    </style>
+</head>
+  <body>
+    <div id='map' style='width: 800px; height: 600px'</div>
+
+    <script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoicHJlb3llY3Rvd29vdyIsImEiOiJjazdvOTN5cGkwMWN1M2xtdmJ1MGRvd2s3In0.UrORy2QZRA_Gu5g8TGszAA';
+  const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://style/mapbox/streets-v11',
+	  center: [-56.18697666757, -34.90508515797],
+      zoom: 16
+  });
+  map.addControl(new mapboxgl.NavigationControl());
+  map.addControl(new mapboxgl.FullscreenControl());
+  map.addControl(new mapboxgl.GeolocateControl({
+    positionOptions: {
+        enableHighAccuracy: true
+    },
+    trackUserLocation: true
+}));
+
+
+  const marker = new mapboxgl.Marker({draggable: false}).setLngLat([-56.187547235670365, -34.90461723313175]).addTo(map);
+  const marker1 = new mapboxgl.Marker({draggable: false}).setLngLat([-56.18697666757461, -34.90508515797628]).addTo(map);
+
+  function onDragEnd()
+{
+    const lngLat = marker.getLngLat();
+    let coordinates;
+    coordinates.style.display = 'block';
+    coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+}
+let on = marker.on('dragend', onDragEnd);
+
+     var geojson = {
+        'type': 'FeatureCollection',
+        'features': [
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [-56.187547235670365, -34.90461723313175]
+            },
+            'properties': {
+              'title': 'CuidaCoches Tony - Colonia',
+              'description': '3 lugares disponibles'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [-56.18697666757461, -34.90508515797628]
+            },
+            'properties': {
+              'title': 'CuidaCoches Brian - Ejido',
+              'description': '5 lugares disponibles'
+            }
+          }
+        ]
+      };
+
+      // add markers to map
+      geojson.features.forEach(function(marker) {
+        // create a HTML element for each feature
+        var el = document.createElement('div');
+        el.className = 'marker';
+        // make a marker for each feature and add it to the map
+        new mapboxgl.Marker(el)
+          .setLngLat(marker.geometry.coordinates)
+          .setPopup(
+            new mapboxgl.Popup({ offset: 25 }) // add popups
+              .setHTML(
+                '<h3>' +
+                  marker.properties.title +
+                  '</h3><p>' +
+                  marker.properties.description +
+                  '</p>' + '<a>¿Desea elegir este lugar?</a>'+
+                      '<a href="lugarocupado">Si</a>'+'<a href=""> No</a>'
+              )
+          )
+          .addTo(map);
+      });
+
+    </script>
+</body>
+</html>

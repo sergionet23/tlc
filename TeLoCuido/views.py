@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/login')
 def index(request):
     equipo = Woow.objects.all()
-    return render(request, 'index.html', {'equipo': equipo})
+    return render(request, 'indexold.html', {'equipo': equipo})
 
 
 @login_required(login_url='/login')
