@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
-from TeLoCuido.models import  Lugar_trabajo, Datos_personales
+from TeLoCuido.models import   Datos_personales
 import json
 
 
@@ -19,6 +19,4 @@ def lugarocupado(request):
 def propina(request):
     template = loader.get_template('mapa/propina.html')
     return HttpResponse(template.render({}, request))
-
-
 

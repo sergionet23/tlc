@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Datos_personales, Lugar_trabajo, Monedero, Puntuacion, Datos_bancarios, Woow
+from .models import Datos_personales,  Monedero, Puntuacion, Datos_bancarios, Woow
 from django.contrib.auth.decorators import login_required
 
 
@@ -13,12 +13,6 @@ def index(request):
 def datos_personales(request):
     datos_personales = Datos_personales.objects.all()
     return render(request, 'datos_personales.html', {'datos_personales': datos_personales})
-
-
-@login_required(login_url='/login')
-def lugar_trabajo(request):
-    lugar_trabajo = Lugar_trabajo.objects.all()
-    return render(request, 'lugar_trabajo.html', {'lugar_trabajo': lugar_trabajo})
 
 
 @login_required(login_url='/login')

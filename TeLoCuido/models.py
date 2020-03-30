@@ -30,14 +30,6 @@ class Datos_personales(models.Model):
     lugares_libres = models.IntegerField()
 
 
-class Lugar_trabajo(models.Model):
-    ci = models.IntegerField()
-    lugar_trabajo = models.CharField(max_length=255)
-    horario = models.IntegerField()
-    latitud = models.FloatField()
-    longitud = models.FloatField()
-
-
 class Monedero(models.Model):
     ci = models.IntegerField()
     fecha_mov = models.FloatField()
