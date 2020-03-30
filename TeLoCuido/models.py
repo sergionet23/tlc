@@ -21,6 +21,13 @@ class Datos_personales(models.Model):
     promedio = models.FloatField()
     cantidad_votos = models.IntegerField()
     image_url = models.CharField(max_length=2083)
+    nombre_lugar_trabajo = models.CharField(max_length=255)
+    horario_inicio = models.IntegerField()
+    horario_fin = models.IntegerField()
+    direccion_trabajo = models.CharField(max_length=255)
+    latitud_trabajo = models.FloatField()
+    longitud_trabajo = models.FloatField()
+    lugares_libres = models.IntegerField()
 
 
 class Lugar_trabajo(models.Model):
@@ -49,4 +56,3 @@ class Datos_bancarios(models.Model):
     ci = models.IntegerField()
     cuenta_banco = models.IntegerField()
     banco = models.CharField(max_length=25)
-

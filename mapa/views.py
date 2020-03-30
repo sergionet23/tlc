@@ -5,9 +5,9 @@ from TeLoCuido.models import  Lugar_trabajo, Datos_personales
 import json
 
 
-def index(request):
+def mapa(request):
     template = loader.get_template('mapa.html')
-    coordenadas = Lugar_trabajo.objects.all()
+    coordenadas = Datos_personales.objects.all()
     return render(request, 'mapa.html', {'coordenadas': coordenadas})
 
 
