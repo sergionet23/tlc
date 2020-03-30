@@ -1,45 +1,50 @@
-<! -- Se definio directamente la ubicacion de ejido y 18 para que figuren los puntos de los cuidacoches -->
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Mapa</title>
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
-	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
-    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-      }
-      .marker {
-        background-image: url('mapbox-icon.png');
-        background-size: cover;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        cursor: pointer;
-      }
-      .mapboxgl-popup {
-        max-width: 200px;
-      }
-      .mapboxgl-popup-content {
-        text-align: center;
-        font-family: 'Open Sans', sans-serif;
-      }
-    </style>
-</head>
-  <body>
-    <div id='map'></div>
+{% load static%}
+<html>
+    <head>
+        <title>Te Lo Cuido</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+        <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+        <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css">
+        <link rel="stylesheet" href="{% static 'css/mapa.css' %}">
+    </head>
+    <body>
 
-    <script>
+      <div class="jumbotron text-center" style="margin-bottom:0">
+        <h1>Te Lo Cuido</h1>
+        <p>Servicio de Cuidacoches </p>
+
+
+      <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>    
+          </ul>
+        </div>
+
+      </nav>
+      <div id='map'></div>
+<script>
+
+{% for cuidacoches in coordenadas %}
+    var lat{{ cuidacoches.ci }} = "{{ cuidacoches.latitud }}".toString().replace(",",".");
+    var lon{{ cuidacoches.ci }} = "{{ cuidacoches.longitud }}".toString().replace(",",".");
+{% endfor %}
+
   mapboxgl.accessToken = 'pk.eyJ1IjoicHJlb3llY3Rvd29vdyIsImEiOiJjazdvOTN5cGkwMWN1M2xtdmJ1MGRvd2s3In0.UrORy2QZRA_Gu5g8TGszAA';
   const map = new mapboxgl.Map({
       container: 'map',
@@ -57,68 +62,24 @@
 }));
 
 
-  const marker = new mapboxgl.Marker({draggable: false}).setLngLat([-56.187547235670365, -34.90461723313175]).addTo(map);
-  const marker1 = new mapboxgl.Marker({draggable: false}).setLngLat([-56.18697666757461, -34.90508515797628]).addTo(map);
-
-  function onDragEnd()
-{
-    const lngLat = marker.getLngLat();
-    let coordinates;
-    coordinates.style.display = 'block';
-    coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
-}
-let on = marker.on('dragend', onDragEnd);
-
-     var geojson = {
-        'type': 'FeatureCollection',
-        'features': [
-          {
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Point',
-              'coordinates': [-56.187547235670365, -34.90461723313175]
-            },
-            'properties': {
-              'title': 'CuidaCoches Tony - Colonia',
-              'description': '3 lugares disponibles'
-            }
-          },
-          {
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Point',
-              'coordinates': [-56.18697666757461, -34.90508515797628]
-            },
-            'properties': {
-              'title': 'CuidaCoches Brian - Ejido',
-              'description': '5 lugares disponibles'
-            }
-          }
-        ]
-      };
-
-      // add markers to map
-      geojson.features.forEach(function(marker) {
-        // create a HTML element for each feature
-        var el = document.createElement('div');
-        el.className = 'marker';
-        // make a marker for each feature and add it to the map
-        new mapboxgl.Marker(el)
-          .setLngLat(marker.geometry.coordinates)
-          .setPopup(
+{% for cuidacoches in coordenadas %}
+  const m{{ cuidacoches.ci }} = new mapboxgl.Marker()
+      .setLngLat([lat{{ cuidacoches.ci }}, lon{{ cuidacoches.ci }}])
+      .setPopup(
             new mapboxgl.Popup({ offset: 25 }) // add popups
               .setHTML(
                 '<h3>' +
-                  marker.properties.title +
+                  '{{cuidacoches.lugar_trabajo}}'+
                   '</h3><p>' +
-                  marker.properties.description +
+                  '{{cuidacoches.ci}}' +
                   '</p>' + '<a>¿Desea elegir este lugar?</a>'+
                       '<a href="lugarocupado">Si</a>'+'<a href=""> No</a>'
               )
           )
-          .addTo(map);
-      });
+      .addTo(map);
+{% endfor %}
+
 
     </script>
-</body>
+    </body>
 </html>
