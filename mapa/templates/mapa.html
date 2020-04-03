@@ -76,7 +76,15 @@
                   '<p> Cantidad de lugares libres: {{cuidacoches.lugares_libres}} </p>' +
                   '<p>{{cuidacoches.direccion_trabajo}} </p>' +
                    '<a>¿Desea elegir este lugar?</a>'+
-                      '<a href="lugarocupado">Si</a>'+'<a href=""> No</a>'
+        '<form name = "nombre" method = "post" action="lugarocupado">'+
+            '{% csrf_token %}'+
+            '<input type = "text" id="id_nombre" name="nombre" Value={{ cuidacoches.nombre }} style="display:none"/>'+
+            '<input type = "text" id="id_apellido" name="apellido" Value={{ cuidacoches.apellido }} style="display:none"/>'+
+            '<input type = "text" id="id_nombre_lugar_trabajo" name="nombre_lugar_trabajo" Value={{ cuidacoches.nombre_lugar_trabajo }} style="display:none"/>'+
+            '<input type = "text" id="id_horario_inicio" name="horario_inicio" Value={{ cuidacoches.horario_inicio }} style="display:none"/>'+
+            '<input type = "text" id="id_horario_fin" name="horario_fin" Value={{ cuidacoches.horario_fin }} style="display:none"/>'+
+            '<input type = "submit" value="SI" />'+
+        '</form>'+'<input type = "submit" value="NO" />'
               )
           )
       .addTo(map);

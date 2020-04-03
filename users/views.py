@@ -4,6 +4,25 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout as do_logout
 from django.contrib.auth import login as do_login
 from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponse
+from .forms import CuidacochesForm
+
+
+def index(request):
+    return render(request, 'bienvenido.html')
+
+
+def cudiacoches_view(request):
+    if request.method == 'POST':
+        form = CuidacochesForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('http://localhost:8000/registro')
+ #       return redirect('users:bienvenido')
+    else:
+        form = CuidacochesForm()
+    return render (request, 'registrocuidacoches.html', {'form':form})
+
 
 
 def bienvenido(request):

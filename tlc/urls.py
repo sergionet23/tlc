@@ -15,4 +15,5 @@ urlpatterns = [
     path('dar_propina/', include('TeLoCuido.urls')),
     path('puntuacion/', include('TeLoCuido.urls')),
     path('', include('mapa.urls')),
+    path('', include('users.urls')),
 ]
